@@ -20,7 +20,19 @@ class Article:
         - No utilizar Properties
         - Utilizar Type Hints en todos los métodos y variables
     """
+ 
+class Article:
 
+    iva = 0.21
+
+    def _init_(self, nombre: str, costo: float, descuento: float):
+            self.nombre= nombre
+            self.costo = costo
+            self.descuento = descuento
+
+    def calcular_precio(self):  
+        calcular_precio = self.costo + (self.costo * Article.iva)
+        return round(calcular_precio, 2)
 
 # NO MODIFICAR - INICIO
 # Test parámetro obligatorio
