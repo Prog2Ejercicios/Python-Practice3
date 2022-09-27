@@ -1,8 +1,25 @@
 """DataClasses y Sobrecarga de operadores."""
 
+from __future__ import annotations
 from dataclasses import dataclass
 from typing import List
 
+
+@dataclass
+class Materia:
+    nombre: str
+
+@dataclass
+class Carrera:
+    materias: List[Materia]
+
+    def __len__(self) -> int:
+        return len(self.materias)
+
+    # longitud: list
+
+    # def __str__(self) -> str:
+    #     return f"Carrera(materias={self.longitud})"
 
 """Una carrera tiene varias materias, la "longitud" de una carrera hace
 referencia a cuantas materias tiene.
