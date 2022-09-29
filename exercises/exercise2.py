@@ -20,6 +20,22 @@ class Article:
         - No utilizar Properties
         - Utilizar Type Hints en todos los métodos y variables
     """
+    
+    __iva=0.21
+
+    def __init__(self, nombre, costo:float, descuento=0) -> None:
+        self.nombre=nombre
+        self.costo=costo
+        self.descuento=descuento
+    
+    def calcular_precio(self)-> float:
+        return round(self.costo*(1+self.__iva) - (self.costo*(1+self.__iva))*self.descuento , 2)
+        
+    
+    @classmethod
+    def actualizar_iva(cls, iva):
+        cls.__iva=iva
+        
 
 
 # NO MODIFICAR - INICIO
