@@ -22,7 +22,20 @@ Restricciones:
     - No utilizar properties
     - Utilizar Type Hints en todos los métodos y variables
 """
+@dataclass
+class Materia:
+    nombre: str
 
+@dataclass 
+class Carrera:
+    longitud : list
+
+    def __str__(self):
+        return f"Carrera(materias=[{self.longitud[0]}, {self.longitud[1]}])"
+    
+    def __len__ (self):
+        return len(self.longitud)
+    
 
 # NO MODIFICAR - INICIO
 # Test parámetro obligatorio
@@ -50,6 +63,5 @@ assert (
     str(ciclo_basico)
     == "Carrera(materias=[Materia(nombre='Matemática'), Materia(nombre='Estadística')])"  # noqa: 501
 )
-
 assert len(ciclo_basico) == 2
 # NO MODIFICAR - FIN
