@@ -45,23 +45,28 @@ def calcular_sueldos(contribuyentes: List[Contribuyente]):
     
     class Contribuyente(ABC):
         @abstractmethod
-        def contribuyentes(self,sueldo):
-            self.sueldo = sueldo    
-    
-    
-    class Monotributista:
-        def __init__(self,contribuyente):
-            
-            self.contribuyente=contribuyente
 
-        def calcular_sueldos(self):
-            -
-
-    
-    class Empleado:
-        def __init__(self,contribuyente):
+        class Monotributista:
+            def __init__(self,sueldo):
+                self.sueldo=sueldo
+            @dataclass
+            def calcular_sueldos(self,sueldo):
+                if self.sueldo>(770000/12):
+                    return self.sueldo-3988,85
+                elif self.sueldo<(770000/12) and self.sueldo>(550000/12):
+                    return self.sueldo-3382,62
+                elif self.sueldo<(550000/12) and self.sueldo>(370000/12):
+                    return self.sueldo-2958,95
+                elif self.sueldo<(370000)/12:
+                    return self.sueldo-2646,22
             
-            self.contribuyente=contribuyente
+        class Empleado:
+            def __init__(self,sueldo):
+                self.sueldo=sueldo
+
+            @dataclass
+            def calcular_sueldos(self):
+                return self.sueldo-(self.sueldo*0.17)
 
 
 # NO MODIFICAR - INICIO
