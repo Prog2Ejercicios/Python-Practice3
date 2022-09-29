@@ -41,6 +41,27 @@ from typing import List
 def calcular_sueldos(contribuyentes: List[Contribuyente]):
     """Data una lista de contribuyentes, devuelve una lista de los sueldos de
     cada uno."""
+    
+    
+    class Contribuyente(ABC):
+        @abstractmethod
+        def contribuyentes(self,sueldo):
+            self.sueldo = sueldo    
+    
+    
+    class Monotributista:
+        def __init__(self,contribuyente):
+            
+            self.contribuyente=contribuyente
+
+        def calcular_sueldos(self):
+            -
+
+    
+    class Empleado:
+        def __init__(self,contribuyente):
+            
+            self.contribuyente=contribuyente
 
 
 # NO MODIFICAR - INICIO
