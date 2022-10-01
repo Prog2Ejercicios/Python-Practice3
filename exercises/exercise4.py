@@ -15,14 +15,25 @@ Restricciones:
     - Utilizar Dataclasses
     - Utilizar 2 clases
     - Utilizar 1 variables de instancia en cada clase
-    - Utilizar 1 método mágico
+    - Utilizar 1 método mágico ---f"Carrera(materias={self.longitud})"
     - No utilizar variables de clase
     - No utilizar métodos de clase
     - No utilizar métodos de instancia
     - No utilizar properties
     - Utilizar Type Hints en todos los métodos y variables
 """
+@dataclass
+class Materia:
+    nombre: str
+@dataclass
+class Carrera:
+    longitud: list
 
+    def __str__(self):
+        return f"Carrera(materias={self.longitud})"
+
+    def __len__(self):
+        return len(self.longitud)
 
 # NO MODIFICAR - INICIO
 # Test parámetro obligatorio
