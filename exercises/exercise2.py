@@ -1,6 +1,9 @@
 """Variables de Clase y Métodos de Clase."""
 
 
+from typing_extensions import Self
+
+
 class Article:
     """Todos los artículos tienen un nombre y un costo, opcionalmente algunos
     tienen un porcentaje de descuento.
@@ -20,6 +23,27 @@ class Article:
         - No utilizar Properties
         - Utilizar Type Hints en todos los métodos y variables
     """
+
+    __iva=0.21
+
+    def __init__(self, nombre, costo, descuento=0):
+        self.nombre=nombre
+        self.costo=costo
+        self.descuento=descuento
+    
+    def calcular_precio(self):
+        precio = round(self.costo + (self.costo * self.__iva), 2)
+        print(precio)
+        precio_final = round( precio - (self.descuento * precio), 2)
+        print(precio_final)
+        return precio_final
+
+    @classmethod
+    def actualizar_iva(cls,iva):
+        cls.__iva=iva
+
+    
+
 
 
 # NO MODIFICAR - INICIO
