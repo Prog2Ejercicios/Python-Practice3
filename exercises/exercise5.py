@@ -40,7 +40,34 @@ from typing import List
 
 def calcular_sueldos(contribuyentes: List[Contribuyente]):
     """Data una lista de contribuyentes, devuelve una lista de los sueldos de
-    cada uno."""
+    cada uno."""    
+    sueldos=[]
+    for elemento in contribuyentes:
+        sueldos.append(elemento.calcular_sueldo())
+    return sueldos
+
+class Contribuyente(ABC):
+    @abstractmethod
+    def calcular_sueldo(self):
+        pass
+
+@dataclass
+class Monotributista(Contribuyente):
+    sueldo:float
+    def calcular_sueldo(self):
+        if self.sueldo>(770000/12):
+            return self.sueldo-3988.85
+        elif self.sueldo<(770000/12) and self.sueldo>(550000/12):
+            return self.sueldo-3382.62
+        elif self.sueldo<(550000/12) and self.sueldo>(370000/12):
+            return self.sueldo-2958.95
+        elif self.sueldo<(370000)/12:
+            return self.sueldo-2646.22
+@dataclass            
+class Empleado(Contribuyente):
+    sueldo:float
+    def calcular_sueldo(self):
+        return self.sueldo-(self.sueldo*0.17)
 
 
 # NO MODIFICAR - INICIO
