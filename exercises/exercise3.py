@@ -4,7 +4,6 @@
 class Article:
     """Re-Escribir el ejercicio anterior utilizando una property en vez de un
     método de instancia.
-
     Restricciones:
         - Utilizar 3 variables de instancia
         - Utilizar 1 property
@@ -14,6 +13,28 @@ class Article:
         - No utilizar Dataclasses
         - Utilizar Type Hints en todos los métodos y variables
     """
+    __iva = 0.21
+
+    def __init__(self, nombre, costo, descuento = 0):
+        self.nombre = nombre
+        self.costo = costo 
+        self.descuento = descuento
+
+    @property 
+    def precio(self):
+        precio =round(self.costo + (self.costo * self.__iva),2)
+        precio_fin = round(precio-(self.descuento * precio),2)
+        return precio_fin
+
+    @classmethod  
+    def actualizar_iva(cls, nuevo_iva): 
+        cls.__iva = nuevo_iva
+        return cls.__iva
+
+    def calcular_precio(self):
+        precio_iva = round((self.costo * self.__iva) + self.costo,2)
+        precio = round((precio_iva - precio_iva * self.descuento),2)
+        return precio
 
 
 # NO MODIFICAR - INICIO
