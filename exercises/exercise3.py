@@ -9,15 +9,12 @@ class Article:
         self.costo = costo
         self.descuento = descuento
         self.precio 
-    
-    # Proporty me sirve para definir un atributo calculado.
     @property
     def precio(self) -> float:
         precio = (self.costo + (self.costo * self.iva))
         if self.descuento != None:
             return round(precio - (precio * self.descuento), 2)
         return round(precio, 2)
-    
     @classmethod
     def actualizar_iva(cls, iva: float) -> None:
         cls.iva = iva
