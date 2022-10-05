@@ -24,7 +24,22 @@ Restricciones:
 """
 
 
+
 # NO MODIFICAR - INICIO
+@dataclass
+class Materia:
+    nombre: str
+
+@dataclass 
+class Carrera:
+    longitud : list
+
+    def __str__(self):
+        return f"Carrera(materias=[{self.longitud[0]}, {self.longitud[1]}])"
+    
+    def __len__ (self):
+        return len(self.longitud)
+        
 # Test parámetro obligatorio
 try:
     materia = Materia()

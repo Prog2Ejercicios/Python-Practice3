@@ -2,6 +2,24 @@
 
 
 class Article:
+    iva: float = 0.21
+
+    def __init__(self, nombre: str, costo: float, descuento: float = None) -> None:
+        self.nombre = nombre
+        self.costo = costo
+        self.descuento = descuento
+
+    
+    def calcular_precio(self) -> float:
+        precio = (self.costo + (self.costo * self.iva))
+        if self.descuento != None:
+            return round(precio - (precio * self.descuento), 2)
+        return round(precio, 2)
+    
+    @classmethod
+    def actualizar_iva(cls, iva: float) -> None:
+        cls.iva = iva
+
     """Todos los artículos tienen un nombre y un costo, opcionalmente algunos
     tienen un porcentaje de descuento.
 
