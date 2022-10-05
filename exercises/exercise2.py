@@ -12,7 +12,7 @@ class Article:
     los descuentos si hubiera. Redondear a 2 decimales.
 
     Restricciones:
-        - Utilizar 3 variables de instancia
+        - Utilizar 3 variables de instancia *
         - Utilizar 1 método de instancia
         - Utilizar 1 variable de clase
         - Utilizar 1 método de clase
@@ -20,6 +20,23 @@ class Article:
         - No utilizar Properties
         - Utilizar Type Hints en todos los métodos y variables
     """
+
+    __iva = 0.21  # Variable de clase (fuera del metodo constructor)
+
+    def __init__(self, nombre: str, costo: float, descuento: float = None) -> None:
+        self.nombre = nombre
+        self.costo = costo
+        self.descuento = descuento
+
+    def calcular_precio(self) -> float:
+        precio = (self.costo + (self.costo * self.__iva))
+        if self.descuento != None:
+            return round(precio - (precio * self.descuento), 2)
+        return round(precio, 2)
+
+    @classmethod  # Metodo de clase
+    def actualizar_iva(cls, iva: float) -> None:
+        cls.__iva = iva  # cls hace referencia a la clase
 
 
 # NO MODIFICAR - INICIO

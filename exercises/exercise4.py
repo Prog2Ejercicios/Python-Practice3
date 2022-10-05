@@ -24,6 +24,19 @@ Restricciones:
 """
 
 
+@dataclass
+class Materia:
+    nombre: str
+
+
+@dataclass
+class Carrera:
+    materias: list
+
+    def __len__(self) -> int:
+        return len(self.materias)
+
+
 # NO MODIFICAR - INICIO
 # Test parámetro obligatorio
 try:

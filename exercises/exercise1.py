@@ -18,6 +18,15 @@ class Circle:
         - Utilizar Type Hints en todos los métodos y variables
     """
 
+    def __init__(self, radio):  # Variable de instancia
+        self.radio = radio
+
+    def area(self):  # Metodo de instancia
+        return round((pi * (self.radio ** 2)), 2)
+
+    def perimetro(self):
+        return round((2 * pi * self.radio), 2)
+
 
 # NO MODIFICAR - INICIO
 # Test básico
