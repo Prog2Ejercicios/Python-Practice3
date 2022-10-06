@@ -9,7 +9,7 @@ class Article:
         - Utilizar 3 variables de instancia
         - Utilizar 1 property
         - Utilizar 1 variable de clase
-        - Utilizar 1 método de clase
+        - Utilizar 1   método de clase
         - No utilizar métodos de instancia
         - No utilizar Dataclasses
         - Utilizar Type Hints en todos los métodos y variables'''
