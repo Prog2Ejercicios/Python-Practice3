@@ -1,6 +1,8 @@
 """Variables de Instancia y Métodos de instancia."""
 
+
 from math import pi
+from msilib.schema import RadioButton
 
 
 class Circle:
@@ -20,6 +22,32 @@ class Circle:
 
 
 # NO MODIFICAR - INICIO
+
+class Circle():
+    def __init__(self,radio):
+
+        self.radio=radio
+
+
+    def area(self):
+     if self.radio!=0:
+         return(round((self.radio**2)*3.14,2))
+     else:
+         return ('No se puede instanciar sin radio')
+      
+    def perimetro(self):
+     if self.radio!=0:    
+         return (round(2*3.14*self.radio,2))  
+     else:
+         return('No se puede instanciar sin radio')
+
+
+"""A= Circle(5,3)
+A.calc_area
+A.calc_circ"""
+
+
+
 # Test básico
 circle = Circle(1)
 assert circle.radio == 1

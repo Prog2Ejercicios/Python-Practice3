@@ -12,11 +12,28 @@ class Article:
         - Utilizar 1 método de clase
         - No utilizar métodos de instancia
         - No utilizar Dataclasses
-        - Utilizar Type Hints en todos los métodos y variables
+        - Utilizar Type Hints en todos los métodos y variables'''
     """
 
 
 # NO MODIFICAR - INICIO
+    __iva = 0.21
+
+    def __init__(self, nombre, costo, descuento=0):
+        self.nombre = nombre
+        self.costo = costo
+        self.descuento = descuento
+
+    @property
+    def precio(self):
+        precio_iva = self.costo + (self.costo*self.__iva)
+        precio_desc = precio_iva - (precio_iva*self.descuento)
+        precio_desc = round(precio_desc, 2)
+        return precio_desc
+
+    @classmethod
+    def actualizar_iva(cls, iva):
+        cls.__iva = iva
 # Test parámetro obligatorio
 try:
     article = Article()
