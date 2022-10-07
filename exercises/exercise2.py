@@ -2,24 +2,32 @@
 
 
 class Article:
-    """Todos los artículos tienen un nombre y un costo, opcionalmente algunos
-    tienen un porcentaje de descuento.
 
-    El IVA es un impuesto que se aplica a todos los productos por igual,
-    actualmente es de 21% pero puede cambiar en el futuro.
+   
+    iva = 0.21
+    
+    def __init__(self, nombre, costo, descuento = 0.00) -> None:
+        self.nombre: str = nombre
+        self.costo: float = costo
+        self.descuento: float = descuento
 
-    Para calcular el precio de un artículo, hay que sumar el IVA y luego restar
-    los descuentos si hubiera. Redondear a 2 decimales.
+    def calcular_precio(self) -> float:
+        
+        subtotal = self.costo - self.costo * self.descuento
+        total_con_iva = subtotal * (1 + self.iva)
+        return round(total_con_iva, 2)
+    
+    @classmethod
+    def actualizar_iva(cls, iva):
+        cls.iva = iva
 
-    Restricciones:
-        - Utilizar 3 variables de instancia
-        - Utilizar 1 método de instancia
-        - Utilizar 1 variable de clase
-        - Utilizar 1 método de clase
-        - No utilizar Dataclasses
-        - No utilizar Properties
-        - Utilizar Type Hints en todos los métodos y variables
-    """
+
+    
+            
+    
+ 
+        
+
 
 
 # NO MODIFICAR - INICIO

@@ -37,10 +37,43 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from typing import List
 
+@dataclass
+class Contribuyente(ABC):
+
+    @abstractmethod
+    def calcular_sueldo() -> float:
+        pass
+
+@dataclass
+class Monotributista(Contribuyente):
+    monto: float
+
+    def calcular_sueldo(self) -> float:
+        if(self.monto < (370000/12)):
+            return self.monto - 2646.22
+        elif(self.monto < (550000/12)):
+            return self.monto - 2958.95
+        elif(self.monto < (770000/12)):
+            return self.monto - 3382.62
+        elif(self.monto > (770000/12)):
+            return self.monto - 3988.85
+        
+
+@dataclass
+class Empleado(Contribuyente):
+    monto: float
+
+    def calcular_sueldo(self)-> float:
+        return self.monto - (self.monto * 0.17)
+
 
 def calcular_sueldos(contribuyentes: List[Contribuyente]):
     """Data una lista de contribuyentes, devuelve una lista de los sueldos de
     cada uno."""
+    sueldos=[]
+    for i in contribuyentes:
+        sueldos.append(i.calcular_sueldo())
+    return sueldos
 
 
 # NO MODIFICAR - INICIO
