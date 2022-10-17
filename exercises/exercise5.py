@@ -38,10 +38,43 @@ from dataclasses import dataclass
 from typing import List
 
 
+class Contribuyente(ABC):
+    @abstractmethod
+    def calcular_sueldo(self):
+        pass
+
+@dataclass
+class Empleado(Contribuyente):
+    salario: float
+
+    def calcular_sueldo(self):
+        resta = (self.salario * 17) / 100
+        sueldo = self.salario - resta
+        return sueldo
+
+@dataclass
+class Monotributista(Contribuyente):
+    salario: float
+
+    def calcular_sueldo(self):
+        if self.salario * 12 < 370000:
+            resta = 2646.22
+        elif self.salario * 12 < 550000:
+            resta = 2958.95
+        elif self.salario * 12 < 770000:
+            resta = 3382.62
+        else:
+            resta = 3988.85
+        sueldo = self.salario - resta
+        return sueldo
+
 def calcular_sueldos(contribuyentes: List[Contribuyente]):
     """Data una lista de contribuyentes, devuelve una lista de los sueldos de
     cada uno."""
-
+    sueldos = []
+    for x in contribuyentes:
+        sueldos.append(x.calcular_sueldo())
+    return sueldos
 
 # NO MODIFICAR - INICIO
 assert type(Contribuyente) == abc.ABCMeta, "Contribuyente debe ser abstracta"
