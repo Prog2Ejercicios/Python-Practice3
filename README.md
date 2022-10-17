@@ -15,3 +15,8 @@ sistema de Github Classroom simplemente ejecutando:
 - Ejercicio 3: Properties.
 - Ejercicio 4: DataClasses y Sobrecarga de operadores
 - Ejercicio 5: Herencia y Clases Abstractas.
+
+Integrantes:
+-50636, Luciano Perg
+-YYYY, Estefano Sobrero
+-XXXX, Franco Procaccini
