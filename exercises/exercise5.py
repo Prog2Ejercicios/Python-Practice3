@@ -1,3 +1,8 @@
+import abc
+from abc import ABC, abstractmethod
+from dataclasses import dataclass
+from typing import List
+
 """El ente regulador de impuestos llama a todas las personas activas
 laboralmente Contribuyentes, sin embargo, existen varios tipos de
 contribuyentes, por ejemplo, el Monotributista y el que es Empleado en relación
@@ -31,16 +36,44 @@ Restricciones:
     - No utilizar properties
     - Utilizar Type Hints en todos los métodos y variables
 """
+class Contribuyente(ABC):
+    @abstractmethod
+    def calcular_sueldo(self) -> None:
+        pass
 
-import abc
-from abc import ABC, abstractmethod
-from dataclasses import dataclass
-from typing import List
+@dataclass
+class Empleado(Contribuyente):
+    sueldo: int
 
+    def calcular_sueldo(self) -> float:
+        return self.sueldo * 0.83
 
-def calcular_sueldos(contribuyentes: List[Contribuyente]):
+@dataclass
+class Monotributista(Contribuyente):
+    sueldo: float
+
+    def calcular_sueldo(self) -> float:
+        bruto: float = self.sueldo * 12
+
+        if bruto < 370000:
+            final: float = self.sueldo - 2646.22
+        elif bruto < 550000:
+            final: float = self.sueldo - 2958.95
+        elif bruto < 770000:
+            final: float = self.sueldo - 3382.62
+        elif bruto > 770000:
+            final: float = self.sueldo - 3988.85
+
+        return final
+
+def calcular_sueldos(contribuyentes: List[Contribuyente]) -> List:
     """Data una lista de contribuyentes, devuelve una lista de los sueldos de
     cada uno."""
+
+    sueldos: List = []
+    for i in contribuyentes:
+        sueldos.append( i.calcular_sueldo() )
+    return sueldos
 
 
 # NO MODIFICAR - INICIO
