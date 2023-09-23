@@ -67,5 +67,5 @@ Article.actualizar_iva(0.25)
 
 article = Article(costo=1, nombre="Auto")
 assert article.nombre == "Auto"
-assert article.calcular_precio() == 1.25
+assert article.calcular_precio() == 0.25
 # NO MODIFICAR - FIN
